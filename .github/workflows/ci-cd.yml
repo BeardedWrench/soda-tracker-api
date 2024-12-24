@@ -2,13 +2,8 @@ name: Backend CI/CD
 
 on:
   push:
-    branches: [ main ]
-    paths:
-      - 'soda-tracker-api/**'
-  pull_request:
-    branches: [ main ]
-    paths:
-      - 'soda-tracker-api/**'
+    branches:
+      - main
 
 jobs:
   test:
