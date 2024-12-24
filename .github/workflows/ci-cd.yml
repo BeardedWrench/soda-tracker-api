@@ -48,23 +48,6 @@ jobs:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         PROJECT_PATH: ./soda-tracker-api
 
-    - name: Notify deployment status
-      if: always()
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const status = '${{ job.status }}';
-          const message = status === 'success' 
-            ? '✅ Backend deployment successful' 
-            : '❌ Backend deployment failed';
-          
-          github.rest.issues.createComment({
-            issue_number: context.issue.number,
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            body: message
-          });
-
 env:
   CI: true
   NODE_ENV: test
