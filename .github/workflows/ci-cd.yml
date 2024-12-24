@@ -8,10 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./soda-tracker-api
-
     steps:
     - uses: actions/checkout@v3
 
@@ -26,19 +22,12 @@ jobs:
     - name: Run tests
       run: npm test
 
-    - name: Upload coverage reports
-      uses: codecov/codecov-action@v3
-      with:
-        directory: ./soda-tracker-api/coverage
 
   deploy:
     needs: test
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./soda-tracker-api
-
+    
     steps:
     - uses: actions/checkout@v3
 
